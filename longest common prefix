@@ -1,0 +1,29 @@
+//O(n^2)
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) 
+    {
+        if(strs.size()==0)
+        {
+            return "";
+        }
+        string ans = strs[0];
+        for(int i=1;i<strs.size();i++)
+        {   int count = 0;
+            for(int j=0;j<strs[i].size();j++)
+            {
+                if(strs[i][j] == ans[j])
+                {
+                    count++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            ans = ans.substr(0,count);
+        }
+        return ans;
+    }
+};
