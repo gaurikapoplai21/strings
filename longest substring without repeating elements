@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) 
+    {
+        int i = 0;
+        int j = 0;
+        string p;
+        int maxlen = 0;
+        while( j < s.size())
+        {   // window length does not indicate longest substring size, it's just used to iterate over all possible substrings
+            //our subset string indicates ans
+            if(p.find(s[j]) != -1) //exists
+            {
+                p.erase(remove(p.begin(),p.end(),s[i]),p.end());
+                i++; //no j++ becuase we want to include that character in subsequent window
+            }
+            else
+            {
+                p += s[j];
+                j++;
+                int n = p.size();
+                maxlen = max(maxlen,n);
+            }
+        }
+        return maxlen;
+    }
+};
